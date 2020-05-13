@@ -42,8 +42,11 @@ section{
     background-color: olive;
     width: 100%;
     height: 80%;    
-    padding: 0 100px;
+    position: relative;
+    z-index: 3;
+    padding: 0 10px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 .game__back {
@@ -57,16 +60,21 @@ section{
     background: coral;
 }
 .card {
+    position: relative;
     margin: 10px;
-    background: midnightblue;
+    box-shadow: 6px 4px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.25s;
+    z-index: 5;
+    background: #fff url(card-back.jpeg) no-repeat;
+    background-size: 100% 100%;
 }
 .card--ten{
     width:150px;
     height: 200px;
 }
 .card--twenty{
-    width:120px;
-    height: 170px;
+    width:110px;
+    height: 135px;
 }
 .card--thirty{
     width:90px;
@@ -74,9 +82,13 @@ section{
 }
 .card--fourty{
     width:60px;
-    height: 110px;
+    height: 100px;
 }
 .card--fifithy{
-    width:30px;
+    width:60px;
     height: 80px;
+}
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 4px 5px rgba(0, 0, 0, 0.2);
 }
