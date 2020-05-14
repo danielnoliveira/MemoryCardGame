@@ -24,11 +24,26 @@ var size_list = [
     "card--fourty",
     "card--fifithy"
 ];
-function getMapCards(cards_number){
-    let map = [];
-    
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
 }
 function startGame(){
+    var j = 0;
     gameScreen.style.left = 0;
     initialScreen.style.left = "-100%";
     if(cards.value>30){
@@ -40,11 +55,13 @@ function startGame(){
     }else{
         deck.style.width = "950px";
     }
-    const mapFrontCards = getMapCards(Number(cards.value));
+    var arr_A = shuffle(cards_front.slice(0,Number(cards.value)/2));
+    var arr_B = shuffle(cards_front.slice(0,Number(cards.value)/2));
+    var mapFrontCards = [...arr_A,...arr_B];
     for(let i = 0;i<cards.value;i++){
         let card = document.createElement('div');
         card.setAttribute('value',false);
-        card.setAttribute('front',cards_front[Math.floor(Math.random() * (+25 - +0)) + +0]);
+        card.setAttribute('front',mapFrontCards[j++]);
         card.classList.add('card');
         card.classList.add(size_list[(cards.value/10)-1]);
         card.addEventListener('click',async function(){
