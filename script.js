@@ -25,7 +25,8 @@ var size_list = [
     "card--fifithy"
 ];
 function getMapCards(cards_number){
-
+    let map = [];
+    
 }
 function startGame(){
     gameScreen.style.left = 0;
